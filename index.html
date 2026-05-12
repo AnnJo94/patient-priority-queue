@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hospital Priority Queue</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+
+  <main class="app-shell">
+    <section class="hero panel">
+      <div>
+        <p class="eyebrow">Live Emergency Triage</p>
+        <h1>Hospital Priority Queue</h1>
+        <p class="hero-copy">Manage patients by severity, assign doctors, and keep the emergency desk moving with a fast interactive dashboard.</p>
+      </div>
+
+      <div class="hero-card">
+        <span class="pulse"></span>
+        <div>
+          <strong id="nextPatientName">No patient waiting</strong>
+          <small>Next patient for treatment</small>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats-grid">
+      <article class="stat-card panel">
+        <span>Waiting Patients</span>
+        <strong id="patientCount">0</strong>
+      </article>
+      <article class="stat-card panel">
+        <span>Critical Cases</span>
+        <strong id="criticalCount">0</strong>
+      </article>
+      <article class="stat-card panel">
+        <span>Doctors Online</span>
+        <strong id="doctorCount">0</strong>
+      </article>
+      <article class="stat-card panel accent-stat">
+        <span>Queue Health</span>
+        <strong id="queueHealth">Clear</strong>
+      </article>
+    </section>
+
+    <section class="workspace">
+      <div class="forms-column">
+        <form class="panel form-card" id="patientForm">
+          <div class="section-title">
+            <div>
+              <p class="eyebrow">Patient Intake</p>
+              <h2>Add Patient</h2>
+            </div>
+            <span class="icon-badge">+</span>
+          </div>
+
+          <label>
+            Patient Name
+            <input type="text" id="patientName" placeholder="Example: Sara Ahmed" required>
+          </label>
+
+          <div class="split-inputs">
+            <label>
+              Age
+              <input type="number" id="patientAge" min="1" max="120" placeholder="34" required>
+            </label>
+            <label>
+              Severity
+              <input type="range" id="patientSeverity" min="1" max="10" value="5">
+              <span class="range-label"><b id="severityValue">5</b>/10 <em id="severityText">Urgent</em></span>
+            </label>
+          </div>
+
+          <button type="submit" class="primary-btn">Add to Queue</button>
+        </form>
+
+        <form class="panel form-card" id="doctorForm">
+          <div class="section-title">
+            <div>
+              <p class="eyebrow">Care Team</p>
+              <h2>Add Doctor</h2>
+            </div>
+            <span class="icon-badge doctor-badge">MD</span>
+          </div>
+
+          <label>
+            Doctor Name
+            <input type="text" id="doctorName" placeholder="Example: Dr. Omar Ali" required>
+          </label>
+
+          <div class="split-inputs">
+            <label>
+              ID
+              <input type="number" id="doctorId" min="1" placeholder="101" required>
+            </label>
+            <label>
+              Specialization
+              <input type="text" id="doctorSpecialization" placeholder="Cardiology" required>
+            </label>
+          </div>
+
+          <button type="submit" class="secondary-btn">Add Doctor</button>
+        </form>
+      </div>
+
+      <div class="queue-column">
+        <section class="panel queue-panel">
+          <div class="section-title queue-title">
+            <div>
+              <p class="eyebrow">Priority Sorted</p>
+              <h2>Patient Queue</h2>
+            </div>
+            <button class="ghost-btn" id="treatNextBtn">Treat Next</button>
+          </div>
+
+          <div class="queue-list" id="patientQueue"></div>
+          <p class="empty-state" id="emptyQueue">No patients yet. Add a patient to begin triage.</p>
+        </section>
+
+        <section class="panel doctors-panel">
+          <div class="section-title">
+            <div>
+              <p class="eyebrow">Directory</p>
+              <h2>Doctors</h2>
+            </div>
+            <input class="search-input" type="search" id="doctorSearch" placeholder="Search ID or name">
+          </div>
+
+          <div class="doctor-list" id="doctorList"></div>
+          <p class="empty-state" id="emptyDoctors">No doctors registered yet.</p>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <div class="toast" id="toast"></div>
+  <script src="script.js"></script>
+</body>
+</html>

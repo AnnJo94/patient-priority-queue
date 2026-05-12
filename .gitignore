@@ -1,0 +1,12 @@
+.vs/
+x64/
+patient .e8b704af/
+*.user
+*.suo
+*.obj
+*.pdb
+*.ilk
+*.exe
+*.log
+*.tlog
+*.recipe
